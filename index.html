@@ -41,25 +41,47 @@
     </style>
 </head>
 <body>
-    <nav class="bg-ncrl-blue text-white sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="cursor-pointer" onclick="showTab('home')">
-                <h1 class="font-extrabold text-xl leading-tight tracking-tighter">NCRL <span class="text-ncrl-gold">Association</span></h1>
-                <p class="text-[10px] tracking-widest uppercase opacity-80 font-medium">Madhu Reddy Layout</p>
-            </div>
-            <div class="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-widest">
-                <button onclick="showTab('home')" class="hover:text-ncrl-gold transition">Home</button>
-                <button onclick="showTab('about')" class="hover:text-ncrl-gold transition">About</button>
-                <button onclick="showTab('notices')" class="hover:text-ncrl-gold transition">Notices</button>
-                <button onclick="showTab('events')" class="hover:text-ncrl-gold transition">Events</button>
-                <button onclick="showTab('gallery')" class="hover:text-ncrl-gold transition">Gallery</button>
-                <button onclick="showTab('membership')" class="hover:text-ncrl-gold transition">Membership</button>
-                <button onclick="showTab('contact')" class="hover:text-ncrl-gold transition">Contact</button>
-                <button onclick="adminLogin()" class="bg-ncrl-gold text-ncrl-blue px-3 py-1 rounded-full font-black shadow-md hover:bg-yellow-500 transition">Admin</button>
-            </div>
-        </div>
-    </nav>
 
+<nav class="bg-ncrl-blue text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="cursor-pointer" onclick="showTab('home')">
+            <h1 class="font-extrabold text-xl leading-tight tracking-tighter">NCRL <span class="text-ncrl-gold">Association</span></h1>
+            <p class="text-[10px] tracking-widest uppercase opacity-80 font-medium">Madhu Reddy Layout</p>
+        </div>
+
+        <div class="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-widest">
+            <button onclick="showTab('home')" class="hover:text-ncrl-gold transition">Home</button>
+            <button onclick="showTab('about')" class="hover:text-ncrl-gold transition">About</button>
+            <button onclick="showTab('notices')" class="hover:text-ncrl-gold transition">Notices</button>
+            <button onclick="showTab('events')" class="hover:text-ncrl-gold transition">Events</button>
+            <button onclick="showTab('gallery')" class="hover:text-ncrl-gold transition">Gallery</button>
+            <button onclick="showTab('membership')" class="hover:text-ncrl-gold transition">Membership</button>
+            <button onclick="showTab('contact')" class="hover:text-ncrl-gold transition">Contact</button>
+            <button onclick="adminLogin()" class="bg-ncrl-gold text-ncrl-blue px-3 py-1 rounded-full font-black shadow-md hover:bg-yellow-500 transition">Admin</button>
+        </div>
+
+        <div class="md:hidden flex items-center">
+            <button onclick="toggleMobileMenu()" class="outline-none">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-800 border-t border-blue-700 animate-fade-in">
+        <div class="flex flex-col p-4 space-y-4 text-xs font-bold uppercase tracking-widest">
+            <button onclick="handleMobileNav('home')" class="text-left border-b border-blue-700 pb-2">Home</button>
+            <button onclick="handleMobileNav('about')" class="text-left border-b border-blue-700 pb-2">About</button>
+            <button onclick="handleMobileNav('notices')" class="text-left border-b border-blue-700 pb-2">Notices</button>
+            <button onclick="handleMobileNav('events')" class="text-left border-b border-blue-700 pb-2">Events</button>
+            <button onclick="handleMobileNav('gallery')" class="text-left border-b border-blue-700 pb-2">Gallery</button>
+            <button onclick="handleMobileNav('membership')" class="text-left border-b border-blue-700 pb-2">Membership</button>
+            <button onclick="handleMobileNav('contact')" class="text-left border-b border-blue-700 pb-2">Contact</button>
+            <button onclick="handleMobileNav('admin')" class="text-ncrl-gold pt-2">Admin Login</button>
+        </div>
+    </div>
+</nav>
     <div id="home" class="tab-content active animate-fade-in">
         <header class="bg-ncrl-blue text-white py-32 relative overflow-hidden text-center px-6">
             <h2 class="text-5xl md:text-6xl font-black mb-6 tracking-tighter">Together for a better community</h2>
