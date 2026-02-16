@@ -236,20 +236,33 @@
     window.onload = loadData;
 
     async function loadData() {
-        try {
-            const response = await fetch(scriptURL);
-            const data = await response.json();
-            
-            // Distinguish between notices and events from the 'Notices' tab
-            notices = data.notices.filter(item => item.type === 'notice').reverse();
-            events = data.notices.filter(item => item.type === 'event').reverse();
-            galleryImages = data.gallery.reverse();
-            
-            render();
-        } catch (e) {
-            console.error("Failed to load data", e);
+    console.log("Fetching data for visitor...");
+    try {
+        const response = await fetch(scriptURL);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        
+        // Safety check: only filter if data exists
+        if (data && data.notices) {
+            notices = data.notices.filter(item => item && item.type === 'notice').reverse();
+            events = data.notices.filter(item => item && item.type === 'event').reverse();
+        } else {
+            notices = [];
+            events = [];
         }
+
+        if (data && data.gallery) {
+            galleryImages = data.gallery.reverse();
+        } else {
+            galleryImages = [];
+        }
+        
+        console.log("Data loaded successfully:", {notices, events, galleryImages});
+        render();
+    } catch (e) {
+        console.error("Critical Error: Visitor cannot access Google Script. Check 'Anyone' permissions.", e);
     }
+}
 
     function showTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(s => s.classList.remove('active'));
