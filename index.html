@@ -435,6 +435,24 @@
             `).join('') || '<p class="col-span-full text-center text-gray-400">No photos in gallery.</p>';
         }
     }
+       // 1. Function to show/hide the menu when the 3-line icon is clicked
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+        menu.classList.toggle('hidden');
+    }
+}
+
+// 2. Function to handle clicks inside the mobile menu
+function handleMobileNav(tabId) {
+    if (tabId === 'admin') {
+        adminLogin();
+    } else {
+        showTab(tabId);
+    }
+    // Automatically close the menu after the user makes a selection
+    toggleMobileMenu();
+}
 </script>
     
 </body>
